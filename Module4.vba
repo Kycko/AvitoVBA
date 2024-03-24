@@ -16,14 +16,14 @@ Sub CRMmrkg()
                 If searchList(i) = "region" Then
                     For Each reg In regVar
                         If Not sheets(Sheet).Range("A1:Z1").Find(reg) Is Nothing Then tempStr = reg
-                    Next
-                Else
+                      Next
+                  Else
                     tempStr = searchList(i)
-                End If
+                  End If
 
                 ' запоминаем номера столбцов
                 indxList(i) = sheets(Sheet).Range("A1:Z1").Find(tempStr, LookIn:=xlValues, LookAt:=xlPart).Column
-            Next i
+              Next i
             If Sheet = "WG" Then WGpriority = sheets(Sheet).Range("A1:Z1").Find("priority", LookIn:=xlValues, LookAt:=xlPart).Column
 
             ' создаём временный лист
@@ -38,14 +38,14 @@ Sub CRMmrkg()
                     tempNum = tempNum - 1
                     sheets(Sheet).Columns(indxList(tempNum)).Copy ActiveSheet.Columns(counter)
                     ActiveSheet.Cells(1, counter).Value = titles(tempNum)
-                Else
+                  Else
                     ActiveSheet.Cells(1, counter).Value = col
-                End If
+                  End If
                 counter = counter + 1
-            Next col
-        Next Sheet
+              Next col
+          Next Sheet
 
         ' ActiveSheet.Range("$A:$S").RemoveDuplicates Columns:=1, Header:=xlNo    ' удаляем дубликаты
-    End If
+      End If
 
-End Sub
+  End Sub
